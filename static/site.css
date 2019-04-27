@@ -1,6 +1,5 @@
 body {
     background-color: #404142;
-    /* position: relative; */
 }
 
 /* For centering the login screen */
@@ -50,4 +49,13 @@ h1.title {
     border-radius: 5px;
     background: #7a7eb4ff;
     color: #f4f5f7;
+}
+
+/* Schedule Page */
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
 }

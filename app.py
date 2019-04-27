@@ -14,8 +14,24 @@ def home():
     user = request.form["username"]
     pw = request.form["password"]
     print("user logged in with: " + user + ", " + pw)
-    database.insert_users_data(database.get_database_file(), user, pw)
+    # database.insert_users_data(database.get_database_file(), user, pw)
     return "Good luck with your webserver!"
+
+# table list
+timeList = []
+for i in range(0, 37):
+	if i % 2 == 0:
+		timeList.append(str(int(6 + (i/2))) + ":00 am") if int(6 + i/2) <= 12 else timeList.append(str(int(6 + (i/2) - 12)) + ":00 pm")
+	else:
+		if int(6 + (i//2)) <= 12:
+			timeList.append(str(6 + (i//2)) + ":30 am")
+		else:
+			timeList.append(str(6 + (i//2) - 12) + ":30 pm")
+
+@app.route("/schedule")
+def schedule():
+    return render_template("schedule.html", len = len(timeList), timeList = timeList) 
+    #return render_template("schedule.html")
 
 @app.context_processor
 def override_url_for():

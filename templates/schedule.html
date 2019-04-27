@@ -7,12 +7,13 @@
         type="text/css" media="screen" charset="utf-8" />
     </head>
     <body>
-    <table style="margin-left: 20px;" border="1"> 
+    <h1 class = "title">Sleep Itinerary</h1>
+    <table style="margin-left: 50px;" width = 90% border="1"> 
         <tbody>
             {% for time in timeList %}
             <tr>
                 <td>{{ time }}</td>
-                <td></td>
+                <td width = 90%></td>
             </tr>
             {% endfor %}
         </tbody>

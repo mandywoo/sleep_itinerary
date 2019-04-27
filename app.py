@@ -20,16 +20,15 @@ def home():
     except sqlite3.IntegrityError:
         # if the user already exists
         pass
-    return render_template("sleep.html")
+    return render_template("sleep.html", len = len(timeList), timeList = timeList)
 
 @app.route("/sleep", methods=["POST"])
 def sleep_box():
-    # sleep_hours = request.form["sleep_hours"]
-    # bed_time = request.form["bedtime"]
-    # wakeup_time = request.form["wakeup_time"]
-    # print("user sleeps" + sleep_hours + "from:" + bed_time + "to" + wakeup_time)
- 
-    return "Go To Schedule!"
+    print('hi')
+    sleep_hours = request.form["hours"]
+    bedtime = request.form["bedtime"]
+    wakeup_time = request.form["wakeup_time"]
+    return render_template("schedule.html", len = len(timeList), timeList = timeList) 
 
 
 

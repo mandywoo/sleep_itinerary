@@ -12,9 +12,10 @@
         <div class="middle">
             <div class="inner">
                 <div class="square">
-                    <form action = "/cgi-bin/dropdown.cgi" method = "post">
+                    <form action = "/sleep" method = "post">
+                        <br><br><br>
                         <label>Select hours:</label>
-                        <select name = "dropdown">
+                        <select name = "hours">
                             <option value = "0" selected>0</option>
                             <option value = "1">1</option>
                             <option value = "2">2</option>
@@ -29,22 +30,23 @@
                             <option value = "11">11</option>
                             <option value = "12">12</option>
                         </select>     
-                    </form>
-                    <form action = "/cgi-bin/dropdown.cgi" method = "post">
-                        <label>Select hours:</label>
-                        <select name = "dropdown">
-                            <option value = "6am" selected>0</option>
-                            <option value = "6:30am">1</option>
-                            <option value = "7am">2</option>
-                            <option value = "7:30am">3</option>
-                            
-                           
+                        <br><br><br>
+                        <label>Select bedtime:</label>
+                        <select name = "bedtime">
+                            {% for time in timeList %}
+                            <option value = "{{ time }}">{{ time }}</option>     
+                            {% endfor %}   
                         </select>     
+                        <br><br><br>
+                        <label>Select wake up time:</label>
+                        <select name = "wakeup_time">
+                            {% for time in timeList %}
+                            <option value = "{{ time }}">{{ time }}</option>     
+                            {% endfor %}   
+                        </select>     
+                        <br><br><br>
+                        <input type = "submit" value = "Set Sleep Schedule" id = "set_sleep_button">
                     </form>
-                <form action="/sleep" method="POST">
-                    <br><br>
-                    <input type = "submit" value = "Set Sleep Schedule" id = "set_sleep_button">
-                </form>
                 </div>
             </div>
         </div>

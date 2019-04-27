@@ -15,8 +15,8 @@ def create_users_table(db_file):
     db = open_connection(db_file)
     cursor = db.cursor()
     cursor.execute(f'CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, \
-                                        user_name TEXT NOT NULL, \
-                                        password TEXT NOT NULL)')
+                                        user_name TEXT NOT NULL UNIQUE, \
+                                        password TEXT NOT NULL UNIQUE)')
     
     close_connection(db)
 
@@ -40,8 +40,13 @@ def get_all_data(db_file, table_name):
 def insert_users_data(db_file, *data): 
     db = open_connection(db_file)
     cursor = db.cursor()
-    cursor.execute(f'INSERT INTO users(user_name, password) VALUES(?, ?)', data)
-    close_connection(db)
+    try: 
+        with db:
+            cursor.execute(f'INSERT INTO users(user_name, password) VALUES(?, ?)', data)
+    except sqlite3.IntegrityError:
+        print('Record already exists')
+    finally:
+        close_connection(db)
 
 
 def open_connection(db_file):
@@ -50,12 +55,21 @@ def open_connection(db_file):
 def close_connection(db):
     db.commit()
     db.close()
+
+def get_database_file():
+    path = open('database_path').read()
+    return path
+
+def close_file(file):
+    file.close()
+
  
 def main():
-    database_file = '/Users/mandywoo/Documents/sleep_itinerary/database.db'
+    database_file = get_database_file()
+    # del_table(database_file, 'users')
     create_connection(database_file)
     create_users_table(database_file)
-    insert_users_data(database_file, 'BOBBY', 'VERYSECURE')    
+    # insert_users_data(database_file, 'BOBBY', 'VERYSECURE')    
     get_all_data(database_file, 'users')
 
 

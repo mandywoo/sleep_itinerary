@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for
 import sqlite3
+from sqlite3 import Error
 import database
 import os
 
@@ -14,8 +15,23 @@ def home():
     user = request.form["username"]
     pw = request.form["password"]
     print("user logged in with: " + user + ", " + pw)
-    # database.insert_users_data(database.get_database_file(), user, pw)
-    return "Good luck with your webserver!"
+    try:
+        database.insert_users_data(database.get_database_file(), user, pw)
+    except sqlite3.IntegrityError:
+        # if the user already exists
+        pass
+    return render_template("sleep.html")
+
+@app.route("/sleep", methods=["POST"])
+def sleep_box():
+    # sleep_hours = request.form["sleep_hours"]
+    # bed_time = request.form["bedtime"]
+    # wakeup_time = request.form["wakeup_time"]
+    # print("user sleeps" + sleep_hours + "from:" + bed_time + "to" + wakeup_time)
+ 
+    return "Go To Schedule!"
+
+
 
 # table list
 timeList = []

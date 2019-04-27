@@ -1,0 +1,53 @@
+body {
+    background-color: #404142;
+    /* position: relative; */
+}
+
+/* For centering the login screen */
+.outer {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .middle {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  .inner {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+h1.title {
+    color: #f4f5f7;
+    font-family: "Verdana", Sans-serif; 
+}
+
+.input_button {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#log_in_button {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #7a7eb4ff;
+    color: #f4f5f7;
+
+}
+
+#sign_up_button {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #7a7eb4ff;
+    color: #f4f5f7;
+}

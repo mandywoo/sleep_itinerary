@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Sleep Box</title>
+             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sleep_box.css')}}" />     
+             <link rel="stylesheet" href="/static/sleep_box.css?q=1280549780"
+        type="text/css" media="screen" charset="utf-8" />
+    </head>
+    <body>
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <div class="square">
+                    <form action = "/cgi-bin/dropdown.cgi" method = "post">
+                        <label>Select hours:</label>
+                        <select name = "dropdown">
+                            <option value = "0" selected>0</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                            <option value = "6">6</option>
+                            <option value = "7">7</option>
+                            <option value = "8">8</option>
+                            <option value = "9">9</option>
+                            <option value = "10">10</option>
+                            <option value = "11">11</option>
+                            <option value = "12">12</option>
+                        </select>     
+                    </form>
+                    <form action = "/cgi-bin/dropdown.cgi" method = "post">
+                        <label>Select hours:</label>
+                        <select name = "dropdown">
+                            <option value = "6am" selected>0</option>
+                            <option value = "6:30am">1</option>
+                            <option value = "7am">2</option>
+                            <option value = "7:30am">3</option>
+                            
+                           
+                        </select>     
+                    </form>
+                <form action="/sleep" method="POST">
+                    <br><br>
+                    <input type = "submit" value = "Set Sleep Schedule" id = "set_sleep_button">
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html> 

@@ -44,7 +44,8 @@ def insert_users_data(db_file, *data):
         with db:
             cursor.execute(f'INSERT INTO users(user_name, password) VALUES(?, ?)', data)
     except sqlite3.IntegrityError:
-        print('Record already exists')
+        pass
+        # print('Record already exists')
     finally:
         close_connection(db)
 

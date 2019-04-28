@@ -1,4 +1,6 @@
 body {
+    background: url("green_plus_sign.png") transparent;
+    background: url("green_plus_sign.png") rgba(0, 0, 0, 0);
     background-color: #404142;
 }
 
@@ -58,12 +60,51 @@ h1.title {
 }
 
 /* Schedule Page */
+#schedule_parent {
+  display: grid;
+  grid-template-columns: 90% 15%;
+}
+
 table {
   border-collapse: collapse;
   color: #f4f5f7;
   font-family: "Montserrat-Light", sans-serif;
+  margin-left: 7%;
+  padding: 20px 10px;
 }
 
 table, th, td {
   border: 1px solid #c4c5c6;
+}
+
+/* Sidebar*/
+.sidebar {
+  height: 70%;
+  width: 7%; 
+  position: fixed; 
+  z-index: 1; /* Stay on top */
+  top: 15;
+  right: 0;
+  border: 1px solid #c4c5c6;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Navigation menu links */
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  text-align: right;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
 }

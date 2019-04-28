@@ -30,8 +30,6 @@ def sleep_box():
     wakeup_time = request.form["wakeup_time"]
     return render_template("schedule.html", len = len(timeList), timeList = timeList) 
 
-
-
 # table list
 timeList = []
 for i in range(0, 37):

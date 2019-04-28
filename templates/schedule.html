@@ -25,18 +25,24 @@
                             {% set rangebool.r = true %}
                             <tr>
                                 <td>{{ time }}</td>
-                                <td width = 90%; class = "color_block">{{ task[2] }}</td>
+                                <td width = 90%; class = "color_block">{{ task[2] }}<br>
+                                    {% if task[3] != ''%}
+                                    <ul>
+                                        <li>{{ task[3] }}</li>
+                                    </ul>
+                                    {% endif %}
+                                </td>        
                             </tr>
                         {% elif time == task[1] %}
                             {% set rangebool.r = false %}
                             <tr>
                                 <td>{{ time }}</td>
-                                <td width = 90%; class = "color_block">{{ task[2] }}</td>
+                                <td width = 90%; class = "color_block"></td>
                             </tr>
                         {% elif rangebool.r == true %}
                             <tr>
                                 <td>{{ time }}</td>
-                                <td width = 90%; class = "color_block">{{ task[2] }}</td>
+                                <td width = 90%; class = "color_block"></td>
                             </tr>
                         {% else %}
                             <tr>

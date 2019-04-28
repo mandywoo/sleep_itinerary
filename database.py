@@ -20,6 +20,19 @@ def create_users_table(db_file):
     
     close_connection(db)
 
+def create_schedule_table(db_file):
+    """ create a table """
+    db = open_connection(db_file)
+    cursor = db.cursor()
+    cursor.execute(f'CREATE TABLE IF NOT EXISTS schedule(id INTEGER PRIMARY KEY AUTOINCREMENT, \
+                                        time TEXT NOT NULL UNIQUE, \
+                                        start TEXT NOT NULL, \
+                                        end TEXT NOT NULL, \
+                                        task TEXT NOT NULL, \
+                                        desc TEXT NOT NULL)')
+    
+    close_connection(db)
+
 
 def del_table(db_file, table_name):
     db = open_connection(db_file)
@@ -43,6 +56,18 @@ def insert_users_data(db_file, *data):
     try: 
         with db:
             cursor.execute(f'INSERT INTO users(user_name, password) VALUES(?, ?)', data)
+    except sqlite3.IntegrityError:
+        pass
+        # print('Record already exists')
+    finally:
+        close_connection(db)
+
+def insert_schedule_data(db_file, *data): 
+    db = open_connection(db_file)
+    cursor = db.cursor()
+    try: 
+        with db:
+            cursor.execute(f'INSERT INTO schedule(time, start, end, task, desc) VALUES(?, ?)', data)
     except sqlite3.IntegrityError:
         pass
         # print('Record already exists')

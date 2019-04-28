@@ -31,7 +31,7 @@ def sleep_box():
     sleep_hours = request.form["hours"]
     bedtime = request.form["bedtime"]
     wakeup_time = request.form["wakeup_time"]
-
+    TASK_LIST.append((bedtime, wakeup_time, 'Sleep', ''))
     return render_template("task.html", len = len(timeList), timeList = timeList)
     # return render_template("schedule.html", len = len(timeList), timeList = timeList) 
 
@@ -47,6 +47,14 @@ def task_box():
     to_time = request.form["to_time"]
     task_description = request.form["description"]
     TASK_LIST.append((from_time, to_time, task_title, task_description))
+
+    # for time, task in timeList:
+    # try:
+    #     database.insert_schedule_data(database.get_database_file(), )
+    # except sqlite3.IntegrityError:
+    #     # if the user already exists
+    #     pass
+
     hex = '#{:02x}{:02x}{:02x}'.format(*random.sample(range(256), 3))
     return render_template("schedule.html", len = len(timeList), timeList = timeList, task_list = TASK_LIST, hex = hex) 
 

@@ -77,6 +77,10 @@ table, th, td {
   border: 1px solid #c4c5c6;
 }
 
+td.color_block {
+  background-color: #9cf4c1;
+}
+
 /* Sidebar*/
 .sidebar {
   height: 70%;

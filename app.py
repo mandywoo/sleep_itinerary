@@ -28,25 +28,68 @@ def sleep_box():
     sleep_hours = request.form["hours"]
     bedtime = request.form["bedtime"]
     wakeup_time = request.form["wakeup_time"]
-    return render_template("schedule.html", len = len(timeList), timeList = timeList) 
 
-
-
-# table list
-timeList = []
-for i in range(0, 37):
-	if i % 2 == 0:
-		timeList.append(str(int(6 + (i/2))) + ":00 am") if int(6 + i/2) <= 12 else timeList.append(str(int(6 + (i/2) - 12)) + ":00 pm")
-	else:
-		if int(6 + (i//2)) <= 12:
-			timeList.append(str(6 + (i//2)) + ":30 am")
-		else:
-			timeList.append(str(6 + (i//2) - 12) + ":30 pm")
+    return render_template("task.html")
+    # return render_template("schedule.html", len = len(timeList), timeList = timeList) 
 
 @app.route("/schedule")
 def schedule():
     return render_template("schedule.html", len = len(timeList), timeList = timeList) 
     #return render_template("schedule.html")
+
+@app.route("/task", methods=["POST"])
+def task_box():
+    task_title = request.form["task_title"]
+    from_time = request.form["from_time"]
+    to_time = request.form["to_time"]
+    description = request.form["description"]
+    print(task_title, from_time, to_time, description)
+    return render_template("schedule.html", len = len(timeList), timeList = timeList) 
+
+    # return render_template("task.html")
+
+def calc_end_sleep_time(sleep_hours, start):
+    start_hour, ampm = start.split()
+    hour, minutes = start_hour.split(':')
+    end_hour = int(hour) + int(sleep_hours)    
+    if end_hour > 12:
+        if ampm == 'am':
+            ampm = 'pm'
+        elif ampm == 'pm':
+            ampm = 'am'
+    return str(end_hour) + ':' + str(minutes) + ' ' + str(ampm)
+
+
+# table list
+timeList = []
+timeList = []
+for i in range(0, 48):
+    if i % 2 == 0:
+        time = int(6 + i/2)
+        if time == 24:
+            timeList.append(str(time - 12) + ":00 am")
+        elif time == 12:
+            timeList.append(str(time) + ":00 pm")
+        elif time < 12:
+            timeList.append(str(time) + ":00 am")
+        elif time - 12 < 12:
+            timeList.append(str(time - 12) + ":00 pm")
+        else:
+            timeList.append(str(time - 24) + ":00 am")
+    else:
+        time = int(6 + (i//2))
+        if time == 24:
+            timeList.append(str(time - 12) + ":30 am")
+        elif time == 12:
+            print(time)
+            timeList.append(str(time) + ":30 pm")
+        elif time < 12:
+            timeList.append(str(time) + ":30 am")
+        elif int((6 + (i//2) - 12)) < 12:
+            timeList.append(str(time - 12) + ":30 pm")
+        else:
+            timeList.append(str(time - 24) + ":30 am")
+
 
 @app.context_processor
 def override_url_for():

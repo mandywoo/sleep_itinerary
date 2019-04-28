@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Sleep Box</title>
+             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='task_box.css')}}" />     
+             <link rel="stylesheet" href="/static/task_box.css?q=1280549780"
+        type="text/css" media="screen" charset="utf-8" />
+    </head>
+    <body>
+        <div class="outer">
+            <div class="middle">
+                <div class="inner">
+                    <div class="rectangle">
+                    <form action="/task" method="POST">
+                        <br><br>
+                        Task Title: <input type="text" name="task_title" class = "input_button">
+                        <br><br>
+                        Time
+                        <br>
+                        From: <input type="text" name="from_time" class = "input_button">
+                        <br><br>
+                        To:   <input type="text" name="to_time" class = "input_button">
+                        <br><br>
+                        Description:
+                        <br>
+                        <textarea name="description" rows="10" cols="30">- Task Description
+                        </textarea>
+                        <br><br>
+                        <input type="submit" value="Create Task" id = "create_task_button">
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html> 

@@ -18,11 +18,11 @@ def home():
     user = request.form["username"]
     pw = request.form["password"]
     print("user logged in with: " + user + ", " + pw)
-    # try:
-    #     database.insert_users_data(database.get_database_file(), user, pw)
-    # except sqlite3.IntegrityError:
-    #     # if the user already exists
-    #     pass
+    try:
+        database.insert_users_data(database.get_database_file(), user, pw)
+    except sqlite3.IntegrityError:
+        # if the user already exists
+        pass
     return render_template("sleep.html", len = len(timeList), timeList = timeList)
 
 @app.route("/sleep", methods=["POST"])

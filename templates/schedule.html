@@ -12,32 +12,36 @@
         <table width = 90%> 
             <tbody>
                 {% set rangebool = namespace(r = false) %}
-                {% for time in timeList %}
-                <indent>
-                    {% if time == task_list[0][0] %}
-                        {% set rangebool.r = true %}
-                        <tr>
-                            <td>{{ time }}</td>
-                            <td width = 90%; class = "color_block">{{ task_list[0][2] }}</td>
-                        </tr>
-                    {% elif time == task_list[0][1] %}
-                        {% set rangebool.r = false %}
-                        <tr>
-                            <td>{{ time }}</td>
-                            <td width = 90%; class = "color_block">{{ task_list[0][2] }}</td>
-                        </tr>
-                    {% elif rangebool.r == true %}
-                        <tr>
-                            <td>{{ time }}</td>
-                            <td width = 90%; class = "color_block">{{ task_list[0][2] }}</td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td>{{ time }}</td>
-                            <td width = 90%></td>
-                        </tr>
-                    {% endif %}
-                </indent>
+                {% for task in task_list %}
+                    <indent>
+                    {% for time in timeList %}
+                    <indent>
+                        {% if time == task[0] %}
+                            {% set rangebool.r = true %}
+                            <tr>
+                                <td>{{ time }}</td>
+                                <td width = 90%; class = "color_block">{{ task[2] }}</td>
+                            </tr>
+                        {% elif time == task[1] %}
+                            {% set rangebool.r = false %}
+                            <tr>
+                                <td>{{ time }}</td>
+                                <td width = 90%; class = "color_block">{{ task[2] }}</td>
+                            </tr>
+                        {% elif rangebool.r == true %}
+                            <tr>
+                                <td>{{ time }}</td>
+                                <td width = 90%; class = "color_block">{{ task[2] }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td>{{ time }}</td>
+                                <td width = 90%></td>
+                            </tr>
+                        {% endif %}
+                    </indent>
+                    {% endfor %}
+                    </indent>
                 {% endfor %}
             </tbody>
         </table>

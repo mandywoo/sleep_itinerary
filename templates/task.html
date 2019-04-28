@@ -18,14 +18,14 @@
                         <br><br>
                         Time
                         <br>
-                        <!-- From: <input type="text" name="from_time" class = "input_button"> -->
+                        <label>From time:</label>
                         <select name = "from_time">
                             {% for time in timeList %}
                             <option value = "{{ time }}">{{ time }}</option>     
                             {% endfor %}   
                         </select>  
                         <br><br>
-                        <!-- To:   <input type="text" name="to_time" class = "input_button"> -->
+                        <label>To time:</label>
                         <select name = "to_time">
                                 {% for time in timeList %}
                                 <option value = "{{ time }}">{{ time }}</option>     
@@ -34,8 +34,7 @@
                         <br><br>
                         Description:
                         <br>
-                        <textarea name="description" rows="10" cols="30">- Task Description
-                        </textarea>
+                        <textarea name="description" rows="10" cols="30">- Task Description</textarea>
                         <br><br>
                         <input type="submit" value="Create Task" id = "create_task_button">
                     </form>

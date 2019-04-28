@@ -45,8 +45,8 @@ def task_box():
     from_time = request.form["from_time"]
     to_time = request.form["to_time"]
     task_description = request.form["description"]
-    TASK_LIST.append((from_time, to_time, task_title, task_description, False))
-    print(task_title, from_time, to_time, task_description)
+    TASK_LIST.append((from_time, to_time, task_title, task_description))
+    print(TASK_LIST)
     return render_template("schedule.html", len = len(timeList), timeList = timeList, task_list = TASK_LIST) 
 
     # return render_template("task.html")

@@ -13,7 +13,6 @@
             <tbody>
                 {% set rangebool = namespace(r = false) %}
                 {% for time in timeList %}
-                
                 <indent>
                     {% if time == task_list[0][0] %}
                         {% set rangebool.r = true %}
@@ -43,7 +42,8 @@
             </tbody>
         </table>
         <div class="sidebar">
-            <a href="#"><img src="/static/img/green_plus_sign.png" width="65px" title="Plus sign" alt="Plus Sign"></a>
+            <!-- <input type="image" src="/static/img/green_plus_sign.png" id=another_task_button width="65px"/> -->
+            <a href="javascript:history.go(-1)"><img src="/static/img/green_plus_sign.png" width="65px" title="Plus sign" alt="Plus Sign"></a>
             <a href="#"><img src="/static/img/line_graph.png" width="65px" title="Line Graph" alt="Line Graph"></a>
         </div>
     </body>

@@ -12,10 +12,19 @@
         <table width = 90%> 
             <tbody>
                 {% for time in timeList %}
-                <tr>
-                    <td>{{ time }}</td>
-                    <td width = 90%></td>
-                </tr>
+                <indent>
+                    {% if time in task_list[0] %}
+                    <tr>
+                        <td>{{ time }}</td>
+                        <td width = 90%>{{ task_list[0][2] }}</td>
+                    </tr>
+                    {% else %}
+                        <tr>
+                            <td>{{ time }}</td>
+                            <td width = 90%></td>
+                        </tr>
+                    {% endif %}
+                </indent>
                 {% endfor %}
             </tbody>
         </table>

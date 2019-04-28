@@ -4,6 +4,8 @@ from sqlite3 import Error
 import database
 import os
 
+TASK_LIST = []
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -29,7 +31,7 @@ def sleep_box():
     bedtime = request.form["bedtime"]
     wakeup_time = request.form["wakeup_time"]
 
-    return render_template("task.html")
+    return render_template("task.html", len = len(timeList), timeList = timeList)
     # return render_template("schedule.html", len = len(timeList), timeList = timeList) 
 
 @app.route("/schedule")
@@ -42,9 +44,10 @@ def task_box():
     task_title = request.form["task_title"]
     from_time = request.form["from_time"]
     to_time = request.form["to_time"]
-    description = request.form["description"]
-    print(task_title, from_time, to_time, description)
-    return render_template("schedule.html", len = len(timeList), timeList = timeList) 
+    task_description = request.form["description"]
+    TASK_LIST.append((from_time, to_time, task_title, task_description, False))
+    print(task_title, from_time, to_time, task_description)
+    return render_template("schedule.html", len = len(timeList), timeList = timeList, task_list = TASK_LIST) 
 
     # return render_template("task.html")
 

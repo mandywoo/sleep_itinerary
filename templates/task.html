@@ -18,9 +18,19 @@
                         <br><br>
                         Time
                         <br>
-                        From: <input type="text" name="from_time" class = "input_button">
+                        <!-- From: <input type="text" name="from_time" class = "input_button"> -->
+                        <select name = "from_time">
+                            {% for time in timeList %}
+                            <option value = "{{ time }}">{{ time }}</option>     
+                            {% endfor %}   
+                        </select>  
                         <br><br>
-                        To:   <input type="text" name="to_time" class = "input_button">
+                        <!-- To:   <input type="text" name="to_time" class = "input_button"> -->
+                        <select name = "to_time">
+                                {% for time in timeList %}
+                                <option value = "{{ time }}">{{ time }}</option>     
+                                {% endfor %}   
+                        </select>  
                         <br><br>
                         Description:
                         <br>

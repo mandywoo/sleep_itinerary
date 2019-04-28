@@ -5,6 +5,11 @@
         <title>Schedule</title>
         <link rel="stylesheet" href="/static/site.css?q=1280549780"
         type="text/css" media="screen" charset="utf-8" />
+        <style>
+            .color_block {
+                background-color: {{ hex }};
+            }
+        </style>
     </head>
     <body>
     <h1 class = "title">Sleep Itinerary</h1>
@@ -42,6 +47,33 @@
                     </indent>
                     {% endfor %}
                     </indent>
+                {% for time in timeList %}
+                <indent>
+                    {% if time == task_list[0][0] %}
+                        {% set rangebool.r = true %}
+                        <tr>
+                            <td>{{ time }}</td>
+                            <td width = 90% class = "color_block">{{ task_list[0][2] }}</td>
+                        </tr>
+                    {% elif time == task_list[0][1] %}
+                        {% set rangebool.r = false %}
+                        <tr>
+                            <td>{{ time }}</td>
+                            <td width = 90% class = "color_block"></td>
+                        </tr>
+                    {% elif rangebool.r == true %}
+                        <tr>
+                            <td>{{ time }}</td>
+                            <td width = 90% class = "color_block"></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td>{{ time }}</td>
+                            <td width = 90%></td>
+                        </tr>
+                    {% endif %}
+                </indent>
+>>>>>>> e05df88d3e85aa97326e8fc3043358267c163a46
                 {% endfor %}
             </tbody>
         </table>

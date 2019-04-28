@@ -3,6 +3,7 @@ import sqlite3
 from sqlite3 import Error
 import database
 import os
+import random
 
 TASK_LIST = []
 
@@ -36,7 +37,7 @@ def sleep_box():
 
 @app.route("/schedule")
 def schedule():
-    return render_template("schedule.html", len = len(timeList), timeList = timeList) 
+    return render_template("schedule.html", len = len(timeList), timeList = timeList, colorList = colorList) 
     #return render_template("schedule.html")
 
 @app.route("/task", methods=["POST"])
@@ -45,9 +46,16 @@ def task_box():
     from_time = request.form["from_time"]
     to_time = request.form["to_time"]
     task_description = request.form["description"]
+<<<<<<< HEAD
     TASK_LIST.append((from_time, to_time, task_title, task_description))
     print(TASK_LIST)
     return render_template("schedule.html", len = len(timeList), timeList = timeList, task_list = TASK_LIST) 
+=======
+    TASK_LIST.append((from_time, to_time, task_title, task_description, False))
+    print(task_title, from_time, to_time, task_description)
+    hex = '#{:02x}{:02x}{:02x}'.format(*random.sample(range(256), 3))
+    return render_template("schedule.html", len = len(timeList), timeList = timeList, task_list = TASK_LIST, hex = hex) 
+>>>>>>> e05df88d3e85aa97326e8fc3043358267c163a46
 
     # return render_template("task.html")
 
@@ -65,7 +73,6 @@ def calc_end_sleep_time(sleep_hours, start):
 
 
 # table list
-timeList = []
 timeList = []
 for i in range(0, 48):
     if i % 2 == 0:
@@ -93,6 +100,7 @@ for i in range(0, 48):
             timeList.append(str(time - 12) + ":30 pm")
         else:
             timeList.append(str(time - 24) + ":30 am")
+
 
 
 @app.context_processor

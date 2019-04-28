@@ -37,7 +37,7 @@ def sleep_box():
 
 @app.route("/schedule")
 def schedule():
-    return render_template("schedule.html", len = len(timeList), timeList = timeList, colorList = colorList) 
+    return render_template("schedule.html", len = len(timeList), timeList = timeList) 
     #return render_template("schedule.html")
 
 @app.route("/task", methods=["POST"])
@@ -56,6 +56,7 @@ def task_box():
     #     pass
 
     hex = '#{:02x}{:02x}{:02x}'.format(*random.sample(range(256), 3))
+    TASK_LIST.append((from_time, to_time, task_title, task_description, hex))
     return render_template("schedule.html", len = len(timeList), timeList = timeList, task_list = TASK_LIST, hex = hex) 
 
     # return render_template("task.html")

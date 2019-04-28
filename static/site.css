@@ -89,6 +89,9 @@ td.color_block {
   z-index: 1; /* Stay on top */
   top: 15;
   right: 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   border: 1px solid #c4c5c6;
   overflow-x: hidden;
   padding-top: 20px;

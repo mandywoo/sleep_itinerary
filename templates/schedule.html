@@ -47,37 +47,10 @@
                     </indent>
                     {% endfor %}
                     </indent>
-                {% for time in timeList %}
-                <indent>
-                    {% if time == task_list[0][0] %}
-                        {% set rangebool.r = true %}
-                        <tr>
-                            <td>{{ time }}</td>
-                            <td width = 90% class = "color_block">{{ task_list[0][2] }}</td>
-                        </tr>
-                    {% elif time == task_list[0][1] %}
-                        {% set rangebool.r = false %}
-                        <tr>
-                            <td>{{ time }}</td>
-                            <td width = 90% class = "color_block"></td>
-                        </tr>
-                    {% elif rangebool.r == true %}
-                        <tr>
-                            <td>{{ time }}</td>
-                            <td width = 90% class = "color_block"></td>
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td>{{ time }}</td>
-                            <td width = 90%></td>
-                        </tr>
-                    {% endif %}
-                </indent>
                 {% endfor %}
             </tbody>
         </table>
         <div class="sidebar">
-            <!-- <input type="image" src="/static/img/green_plus_sign.png" id=another_task_button width="65px"/> -->
             <a href="javascript:history.go(-1)"><img src="/static/img/green_plus_sign.png" width="65px" title="Plus sign" alt="Plus Sign"></a>
             <a href="#"><img src="/static/img/line_graph.png" width="65px" title="Line Graph" alt="Line Graph"></a>
         </div>

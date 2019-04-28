@@ -6,9 +6,9 @@
         <link rel="stylesheet" href="/static/site.css?q=1280549780"
         type="text/css" media="screen" charset="utf-8" />
         <style>
-            .color_block {
+            /* .color_block {
                 background-color: {{ hex }};
-            }
+            } */
         </style>
     </head>
     <body>
@@ -19,27 +19,28 @@
                 {% set rangebool = namespace(r = false) %}
                 {% for task in task_list %}
                     <indent>
+                    {% set taskcolor = task[4] %}
                     {% for time in timeList %}
                     <indent>
                         {% if time == task[0] %}
                             {% set rangebool.r = true %}
-                            <tr>
+                            <tr id = "{{time}}">
                                 <td>{{ time }}</td>
-                                <td width = 90%; class = "color_block">{{ task[2] }}</td>
+                                <td width = 90%; class = "color_block" style="background-color: {{taskcolor}};">{{ task[2] }}</td>
                             </tr>
                         {% elif time == task[1] %}
                             {% set rangebool.r = false %}
-                            <tr>
+                            <tr id = "{{time}}">
                                 <td>{{ time }}</td>
-                                <td width = 90%; class = "color_block">{{ task[2] }}</td>
+                                <td width = 90%; class = "color_block" style="background-color: {{taskcolor}};">{{ task[2] }}</td>
                             </tr>
                         {% elif rangebool.r == true %}
-                            <tr>
+                            <tr id = "{{time}}">
                                 <td>{{ time }}</td>
-                                <td width = 90%; class = "color_block">{{ task[2] }}</td>
+                                <td width = 90%; class = "color_block" style="background-color: {{taskcolor}};">{{ task[2] }}</td>
                             </tr>
                         {% else %}
-                            <tr>
+                            <tr id = "{{time}}">
                                 <td>{{ time }}</td>
                                 <td width = 90%></td>
                             </tr>

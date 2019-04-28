@@ -2,6 +2,11 @@ body {
     background-color: #404142;
 }
 
+@font-face {
+  font-family: Montserrat-Light;
+  src: url(/static/fonts/Montserrat-Light.otf);
+}
+
 .outer {
     display: table;
     position: absolute;
@@ -28,11 +33,15 @@ body {
     position: absolute;
     left: 50%;
     top: 50%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     transform: translate(-50%, -50%);
   }
 
   form {
     text-align: center;
+    font-family: "Montserrat-Light", sans-serif;
   }
 
 

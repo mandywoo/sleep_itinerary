@@ -18,11 +18,11 @@ def home():
     user = request.form["username"]
     pw = request.form["password"]
     print("user logged in with: " + user + ", " + pw)
-    try:
-        database.insert_users_data(database.get_database_file(), user, pw)
-    except sqlite3.IntegrityError:
-        # if the user already exists
-        pass
+    # try:
+    #     database.insert_users_data(database.get_database_file(), user, pw)
+    # except sqlite3.IntegrityError:
+    #     # if the user already exists
+    #     pass
     return render_template("sleep.html", len = len(timeList), timeList = timeList)
 
 @app.route("/sleep", methods=["POST"])
@@ -37,7 +37,7 @@ def sleep_box():
 
 @app.route("/schedule")
 def schedule():
-    return render_template("schedule.html", len = len(timeList), timeList = timeList, colorList = colorList) 
+    return render_template("schedule.html", len = len(timeList), timeList = timeList) 
     #return render_template("schedule.html")
 
 @app.route("/task", methods=["POST"])
@@ -46,8 +46,8 @@ def task_box():
     from_time = request.form["from_time"]
     to_time = request.form["to_time"]
     task_description = request.form["description"]
-    TASK_LIST.append((from_time, to_time, task_title, task_description))
     hex = '#{:02x}{:02x}{:02x}'.format(*random.sample(range(256), 3))
+    TASK_LIST.append((from_time, to_time, task_title, task_description, hex))
     return render_template("schedule.html", len = len(timeList), timeList = timeList, task_list = TASK_LIST, hex = hex) 
 
     # return render_template("task.html")

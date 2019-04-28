@@ -8,16 +8,21 @@
     </head>
     <body>
     <h1 class = "title">Sleep Itinerary</h1>
-    <table style="margin-left: 50px;" width = 90% border="1"> 
-        <tbody>
-            {% for time in timeList %}
-            <tr>
-                <td>{{ time }}</td>
-                <td width = 90%></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div id = "schedule_parent">
+        <table width = 90%> 
+            <tbody>
+                {% for time in timeList %}
+                <tr>
+                    <td>{{ time }}</td>
+                    <td width = 90%></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="sidebar">
+            <a href="#"><img src="/static/img/green_plus_sign.png" width="65px" title="Plus sign" alt="Plus Sign"></a>
+            <a href="#"><img src="/static/img/line_graph.png" width="65px" title="Line Graph" alt="Line Graph"></a>
+        </div>
     </body>
 </html>
 
